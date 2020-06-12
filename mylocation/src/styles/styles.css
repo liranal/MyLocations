@@ -1,0 +1,12 @@
+/* Styling for tabs*/
+.barButtons {
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+/* Identifing which tab we are on*/
+.barButtonsOnPage {
+  text-decoration: none;
+  box-shadow: 1px 1px 10px 3px black;
+  height: 35px;
+}
