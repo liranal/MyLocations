@@ -31,7 +31,6 @@ const categoryReducer = (state = defaultState, action) => {
         }
       });
       localStorage.setItem("categories", JSON.stringify(arr));
-
       return state.map((category) => {
         if (category.id === action.id) {
           return {
@@ -46,5 +45,4 @@ const categoryReducer = (state = defaultState, action) => {
       return state;
   }
 };
-
 export default categoryReducer;

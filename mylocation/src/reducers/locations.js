@@ -36,7 +36,6 @@ const locationReducer = (state = defaultState, action) => {
         }
       });
       localStorage.setItem("locations", JSON.stringify(arr));
-
       return state.map((location) => {
         if (location.id === action.id) {
           return {
@@ -51,5 +50,4 @@ const locationReducer = (state = defaultState, action) => {
       return state;
   }
 };
-
 export default locationReducer;

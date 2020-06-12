@@ -1,5 +1,7 @@
-/* Get categories data and present them by the sort option that have been chose */
-const getVisibalCategory = (categories, { text = "", sortBy }) => {
+/* 
+   Find string inside the categories list that includes the text we passed.
+*/
+const getVisibalCategory = (categories, { text = "" }) => {
   return categories
     .filter((category) => {
       if (category.name) {
@@ -11,30 +13,12 @@ const getVisibalCategory = (categories, { text = "", sortBy }) => {
       return "";
     })
     .sort((a, b) => {
-      if (sortBy === "Alphabetic") {
-        if (a.name.toLowerCase() < b.name.toLowerCase()) {
-          return -1;
-        }
-        if (a.name.toLowerCase() > b.name.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      } else if (sortBy === "group") {
-        if (a.category.toLowerCase() < b.category.toLowerCase()) {
-          return -1;
-        }
-        if (a.category.toLowerCase() > b.category.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      } else if (sortBy === "ungroup") {
-        if (a.addedDate < b.addedDate) {
-          return -1;
-        }
-        if (a.addedDate > b.addedDate) {
-          return 1;
-        }
-        return 0;
+      //Sorting alphabeltically the Categories
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
       }
       return 0;
     });

@@ -8,6 +8,8 @@ const Footer = ({ location: { pathname }, className }) => {
   const route = useMemo(() => {
     return pathname.split("/")[1];
   }, [pathname]);
+
+  // Change the view accorindg the route
   if (pathname === "/Category") {
     return (
       <footer className={className}>

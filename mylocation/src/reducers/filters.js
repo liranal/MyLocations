@@ -1,7 +1,6 @@
 const filtersDefaultState = [
   {
     text: "",
-    sortBy: "", //addedDate,alphabetic,grouped by category
   },
 ];
 const filtersReducer = (state = filtersDefaultState, action) => {
@@ -11,25 +10,9 @@ const filtersReducer = (state = filtersDefaultState, action) => {
         ...state,
         text: action.text,
       };
-    case "ABC_SORT_FILTER":
-      return {
-        ...state,
-        sortBy: action.sortBy,
-      };
-    case "GROUP_BY_FILTER":
-      return {
-        ...state,
-        sortBy: action.sortBy,
-      };
-    case "DATE_SORT_FILTER":
-      return {
-        ...state,
-        sortBy: action.sortBy,
-      };
     case "RESET_FILTER":
       return {
         ...state,
-        sortBy: action.sortBy,
       };
     default:
       return state;

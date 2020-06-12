@@ -12,6 +12,7 @@ import AddCategoryPage from "../components/Category/AddCategoryPage";
 import EditCategoryPage from "../components/Category/EditCategoryPage";
 import EditLocationPage from "../components/Location/EditLocationPage";
 
+/* Styled Component for header */
 const HeaderStyled = styled(Header)`
   display: flex;
   top: 0;
@@ -28,6 +29,8 @@ const HeaderStyled = styled(Header)`
   color: white;
   justify-content: space-evenly;
 `;
+
+/* Styled Compoment for footer */
 const FooterStyled = styled(Footer)`
   display: flex;
   position: fixed;
@@ -51,17 +54,35 @@ const FooterStyled = styled(Footer)`
 const AppRouter = () => (
   <BrowserRouter>
     <section>
+      {/* Header Styled Component */}
       <HeaderStyled />
       <Switch>
+        {/* Main Page */}
         <Route path="/" component={MyLocationDashboardPage} exact />
+
+        {/* Location page - Allow Add, Edit, Remove and show all locations in Store*/}
         <Route path="/Location" exact component={LocationList} />
+
+        {/* Add Location Page */}
         <Route path="/Location/Add" exact component={AddLocationPage} />
+
+        {/* Category page - Allow Add, Edit, Remove and show all categories in Store*/}
         <Route path="/Category" exact component={CategoryList} />
+
+        {/* Add Category page*/}
         <Route path="/Category/Add" exact component={AddCategoryPage} />
+
+        {/* Edit Category page */}
         <Route path="/Category/edit/:id" exact component={EditCategoryPage} />
+
+        {/* Edit Location page */}
         <Route path="/Location/edit/:id" exact component={EditLocationPage} />
+
+        {/* Default Page */}
         <Route component={notFound} />
       </Switch>
+
+      {/* Footer Styled Component */}
       <Route component={FooterStyled} />
     </section>
   </BrowserRouter>

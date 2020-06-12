@@ -1,5 +1,7 @@
-/* Get Locations data and present them by the sort option that have been chose */
-const getVisibalLocations = (locations, { text = "", sortBy }) => {
+/* 
+ Find string inside the locations list that includes the text we passed.
+ */
+const getVisibalLocations = (locations, { text = "" }) => {
   return locations
     .filter((location) => {
       if (location.name) {
@@ -11,22 +13,12 @@ const getVisibalLocations = (locations, { text = "", sortBy }) => {
       return "";
     })
     .sort((a, b) => {
-      if (sortBy === "Alphabetic") {
-        if (a.name.toLowerCase() < b.name.toLowerCase()) {
-          return -1;
-        }
-        if (a.name.toLowerCase() > b.name.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      } else if (sortBy === "Group") {
-        if (a.category.toLowerCase() < b.category.toLowerCase()) {
-          return -1;
-        }
-        if (a.category.toLowerCase() > b.category.toLowerCase()) {
-          return 1;
-        }
-        return 0;
+      //Sorting alphabeltically the locations
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
       }
       return 0;
     });

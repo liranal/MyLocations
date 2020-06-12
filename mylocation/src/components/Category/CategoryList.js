@@ -11,11 +11,9 @@ const CategoryList = (props) => (
     })}
   </div>
 );
-
 const mapStateToProps = (state) => {
   return {
     categories: selectCategory(state.categories, state.filters),
   };
 };
-
 export default connect(mapStateToProps)(CategoryList);

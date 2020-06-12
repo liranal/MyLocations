@@ -48,5 +48,4 @@ const Category = ({ category, editFlag = false, onSubmit }) => {
     );
   }
 };
-
 export default Category;
