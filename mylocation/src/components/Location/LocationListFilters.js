@@ -4,9 +4,6 @@ import TextField from "@material-ui/core/TextField";
 
 import {
   setTextFilter,
-  filterABC,
-  filterByGroup,
-  filterByUngroup,
 } from "../../actions/filters";
 const LocationListFilters = (props) => (
   <div className="barButtons">

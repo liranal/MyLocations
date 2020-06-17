@@ -1,20 +1,36 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
+import { NavLink, Link } from "react-router-dom";
+import { connect, useDispatch } from "react-redux";
 import { removeCategory } from "../../actions/category";
-const CategoryListItem = ({ dispatch, id, name }) => (
-  <div>
-    <NavLink to={`Category/edit/${id}`}>
-      <h3>{name}</h3>
-    </NavLink>
-    <span
-      onClick={(e) => {
-        dispatch(removeCategory({ id }));
-      }}
-    >
-      X
-    </span>
-  </div>
-);
+import {
+  Button,
+  List,
+  ListItem,
+  TextField,
+  ListItemSecondaryAction,
+  ListItemText,
+} from "@material-ui/core";
+const CategoryListItem = (props) => {
+  console.log(props);
+  const dispatch = useDispatch();
+  return (
+    <div>
+      <ListItem button>
+        <Link to={`Category/edit/${props.id}`}>
+          <ListItemText primary={props.name}></ListItemText>
+        </Link>
+        <ListItemSecondaryAction>
+          <Button
+            onClick={(e) => {
+              dispatch(removeCategory(props.id));
+            }}
+          >
+            Remove
+          </Button>
+        </ListItemSecondaryAction>
+      </ListItem>
+    </div>
+  );
+};
 
 export default connect()(CategoryListItem);

@@ -22,7 +22,7 @@ export const addLocation = ({
 });
 
 //REMOVE_LOCATION
-export const removeLocation = ({ id }) => ({
+export const removeLocation = (id) => ({
   type: "REMOVE_LOCATION",
   id,
 });

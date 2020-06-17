@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import { addCategory } from "../../actions/category";
 const AddCategoryPage = (props) => (
   <div>
-    <h1>Add Category</h1>
+    <h3>Add Category</h3>
     <AddCategory
+      editFlag="false"
       onSubmit={({ name }) => {
         props.dispatch(addCategory({ name }));
         props.history.push("/Category");

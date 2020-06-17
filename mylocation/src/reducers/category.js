@@ -12,6 +12,7 @@ const categoryReducer = (state = defaultState, action) => {
       localStorage.setItem("categories", JSON.stringify(arr));
       return [...state, action.category];
     case "REMOVE_CATEGORY":
+      console.log("REMOVING");
       arr = arr.filter(({ id }) => {
         return id !== action.id;
       });

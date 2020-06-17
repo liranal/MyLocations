@@ -1,17 +1,22 @@
 /* eslint-disable no-unused-expressions */
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import LocationListItem from "./LocationListItem";
 import selectLocation from "../../selectors/locations";
-const LocationList = (props) => (
-  <div>
-    <h1>Location List</h1>
-
-    {props.locations.map((location) => {
-      return <LocationListItem key={location.id} {...location} />;
-    })}
-  </div>
-);
+import { List } from "@material-ui/core";
+const LocationList = (props) => {
+  const locations = useSelector((state) => state.locations);
+  return (
+    <div>
+      <h1>Location List</h1>
+      <List>
+        {locations.map((location) => {
+          return <LocationListItem key={location.id} {...location} />;
+        })}
+      </List>
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {

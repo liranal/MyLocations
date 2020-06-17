@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
+import { Button, FormControl } from "@material-ui/core";
 
-const Location = ({ location, editFlag = false, onSubmit }) => {
-  const [name, setName] = useState(location ? location.name : "");
-  const [address, setAddress] = useState(location ? location.address : "");
-  const [lat, setLat] = useState(location ? location.lat : "");
-  const [lon, setLon] = useState(location ? location.lon : "");
-  const [category, setCategory] = useState(location ? location.category : "");
+const Location = (props) => {
+  const [name, setName] = useState(props.name ? props.name : "");
+  const [address, setAddress] = useState(props.address ? props.address : "");
+  const [lat, setLat] = useState(props.lat ? props.lat : "");
+  const [lon, setLon] = useState(props.lon ? props.lon : "");
+  const [category, setCategory] = useState(
+    props.category ? props.category : ""
+  );
   const [error, setError] = useState();
 
   const onSubmitHandler = (e) => {
@@ -15,7 +18,8 @@ const Location = ({ location, editFlag = false, onSubmit }) => {
       setError("Please fill all required fields");
     } else {
       setError("");
-      onSubmit({
+      console.log("Submit");
+      props.onSubmit({
         name,
         address,
         lat,
@@ -24,13 +28,14 @@ const Location = ({ location, editFlag = false, onSubmit }) => {
       });
     }
   };
-
-  if (editFlag === false) {
+  console.log(props.editFlag);
+  if (props.editFlag == "false") {
     return (
-      <form onSubmit={onSubmitHandler}>
+      <FormControl>
         <TextField
           id="locationName"
           label="Location Name"
+          value={name}
           onChange={(e) => {
             setName(e.target.value);
           }}
@@ -40,6 +45,7 @@ const Location = ({ location, editFlag = false, onSubmit }) => {
         <TextField
           id="address"
           label="Address"
+          value={address}
           onChange={(e) => {
             setAddress(e.target.value);
           }}
@@ -49,6 +55,7 @@ const Location = ({ location, editFlag = false, onSubmit }) => {
           type="number"
           id="Latitude"
           label="Latitude"
+          value={lat}
           onChange={(e) => {
             setLat(e.target.value);
           }}
@@ -58,6 +65,7 @@ const Location = ({ location, editFlag = false, onSubmit }) => {
           type="number"
           id="Longitude"
           label="Longitude"
+          value={lon}
           onChange={(e) => {
             setLon(e.target.value);
           }}
@@ -66,17 +74,18 @@ const Location = ({ location, editFlag = false, onSubmit }) => {
         <TextField
           id="Category"
           label="Category"
+          value={category}
           onChange={(e) => {
             setCategory(e.target.value);
           }}
           required
         />
-        <button>Add</button>
-      </form>
+        <Button onClick={onSubmitHandler}>Add</Button>
+      </FormControl>
     );
   } else {
     return (
-      <form onSubmit={onSubmitHandler}>
+      <FormControl>
         <TextField
           id="EditableLocation"
           label="Location Name"
@@ -116,8 +125,8 @@ const Location = ({ location, editFlag = false, onSubmit }) => {
           }}
           required
         />
-        <button>Edit!</button>
-      </form>
+        <Button onClick={onSubmitHandler}>Edit!</Button>
+      </FormControl>
     );
   }
 };

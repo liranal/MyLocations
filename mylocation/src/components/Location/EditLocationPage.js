@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Location from "./Locaition";
 import { removeLocation, editLocation } from "../../actions/locations";
+import { Button } from "@material-ui/core";
 const EditLocationPage = (props) => {
   const onSubmit = (location) => {
     console.log(location);
@@ -17,8 +18,8 @@ const EditLocationPage = (props) => {
     <div>
       <h1>Edit Location</h1>
       <div>
-        <Location location={props.location} onSubmit={onSubmit} editFlag />
-        <button onClick={onRemove}>Remove </button>
+        <Location {...props.location} onSubmit={onSubmit} editFlag="true" />
+        <Button onClick={onRemove}>Remove </Button>
       </div>
     </div>
   );

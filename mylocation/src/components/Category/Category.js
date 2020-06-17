@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
+import { Button, FormControl } from "@material-ui/core";
 
-const Category = ({ category, editFlag = false, onSubmit }) => {
-  const [name, setName] = useState(category ? category.name : "");
+const Category = (props) => {
+  const [name, setName] = useState(props.category ? props.category.name : "");
   const [error, setError] = useState("");
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -10,14 +11,14 @@ const Category = ({ category, editFlag = false, onSubmit }) => {
       setError("Please fill all required fields");
     } else {
       setError("");
-      onSubmit({
+      props.onSubmit({
         name,
       });
     }
   };
-  if (editFlag) {
+  if (props.editFlag == "true") {
     return (
-      <form onSubmit={onSubmitHandler}>
+      <FormControl>
         <TextField
           id="EditableCategoryName"
           label="Category Name"
@@ -27,13 +28,13 @@ const Category = ({ category, editFlag = false, onSubmit }) => {
           }}
           value={name}
         />
-        <button>Edit!</button>
+        <Button onClick={onSubmitHandler}>Edit!</Button>
         <p value={error} />
-      </form>
+      </FormControl>
     );
   } else {
     return (
-      <form onSubmit={onSubmitHandler}>
+      <FormControl>
         <TextField
           id="NotEditableCategoryName"
           label="Category Name"
@@ -42,9 +43,9 @@ const Category = ({ category, editFlag = false, onSubmit }) => {
             setName(e.target.value);
           }}
         />
-        <button>Add -></button>
+        <Button onClick={onSubmitHandler}>Add</Button>
         <p value={error} />
-      </form>
+      </FormControl>
     );
   }
 };

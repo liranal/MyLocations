@@ -15,17 +15,15 @@ const locationReducer = (state = defaultState, action) => {
       localStorage.setItem("locations", JSON.stringify(arr));
       return [...state, action.location];
     case "REMOVE_LOCATION":
-      arr = arr.filter(({ id }) => {
-        return id !== action.id;
-      });
+      console.log("REMOVING");
+      let indexToUpdate = arr.findIndex(
+        (location) => location.id === action.id
+      );
+      arr.splice(indexToUpdate, 1);
       localStorage.setItem("locations", JSON.stringify(arr));
-      return state.filter(({ id }) => {
-        return id !== action.id;
-      });
+      return arr;
     case "EDIT_LOCATION":
       arr = arr.map((location) => {
-        console.log("Check: " + JSON.stringify(location.id));
-        console.log("Check: " + JSON.stringify(action));
         if (location.id === action.id) {
           return {
             ...location,
