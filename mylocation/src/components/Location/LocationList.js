@@ -5,7 +5,10 @@ import LocationListItem from "./LocationListItem";
 import selectLocation from "../../selectors/locations";
 import { List } from "@material-ui/core";
 const LocationList = (props) => {
-  const locations = useSelector((state) => state.locations);
+  const locations = useSelector((state) =>
+    selectLocation(state.locations, state.filters)
+  );
+
   return (
     <div>
       <h1>Location List</h1>

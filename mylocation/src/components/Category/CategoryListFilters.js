@@ -1,9 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { setTextFilter } from "../../actions/filters";
 import TextField from "@material-ui/core/TextField";
 
 const CategoryListFilters = (props) => {
+  const dispatch = useDispatch();
   return (
     <div className="barButtons">
       <TextField
@@ -12,12 +13,13 @@ const CategoryListFilters = (props) => {
         variant="filled"
         color="primary"
         onChange={(e) => {
-          props.dispatch(setTextFilter(e.target.value));
+          dispatch(setTextFilter(e.target.value));
         }}
       />
     </div>
   );
 };
+
 const mapStateToProps = (state) => {
   return {
     filters: state.filters,

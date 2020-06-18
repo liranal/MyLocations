@@ -1,11 +1,13 @@
 import React from "react";
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import CategoryListItem from "./CategoryListItem";
 import selectCategory from "../../selectors/category";
 import { List } from "@material-ui/core";
 
 const CategoryList = (props) => {
-  const categories = useSelector((state) => state.categories);
+  const categories = useSelector((state) =>
+    selectCategory(state.categories, state.filters)
+  );
   return (
     <div>
       <h1>Category List</h1>
