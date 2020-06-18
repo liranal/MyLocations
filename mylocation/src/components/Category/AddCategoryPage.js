@@ -14,4 +14,4 @@ const AddCategoryPage = (props) => (
     />
   </div>
 );
-export default connect()(AddCategoryPage);
+export default AddCategoryPage;
